@@ -20,10 +20,10 @@ async function showCities() {
     const citiesController = new CitiesController(url);
     const cities = await citiesController.getCities("cities");
 
-    console.log(cities);
-
+    cities.forEach(city => {
+        carSection?.append(Card(city))
+    })
 }
 
 showCities()
 
-carSection?.append(Card())
