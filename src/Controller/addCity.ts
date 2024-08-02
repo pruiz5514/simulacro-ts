@@ -11,10 +11,10 @@ const cityDescription = document.querySelector("#newCity-description") as HTMLTe
 form.addEventListener("submit", (event: Event) => {
     event.preventDefault();
 
-    const newCity = {
+    const newCity: ICity = {
         city: city.value,
         country: country.value,
-        imgage: image.value,
+        image: image.value,
         date: new Date(),
         cityDescription: cityDescription.value
     }

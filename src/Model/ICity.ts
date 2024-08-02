@@ -1,5 +1,5 @@
 export interface ICity {
-    id: undefined | string | number,
+    id? :string | number,
     city: string,
     country: string,
     image: string,
