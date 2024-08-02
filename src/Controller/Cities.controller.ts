@@ -14,4 +14,24 @@ export class CitiesController {
 
         return data
     }
+
+    async postCities(endPoint: string, dataCity: ICity) {
+        const response = await fetch(`${this.url}${endPoint}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'Application/json'
+            },
+            body: JSON.stringify(dataCity)
+        });
+
+        console.log(response.status);
+
+        const data = response.json();
+        if (response.status != 201) {
+            throw new Error("No se puede publicar ciudad");
+        }
+
+        return data
+
+    }
 }

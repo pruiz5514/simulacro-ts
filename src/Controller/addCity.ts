@@ -1,4 +1,5 @@
 import { ICity } from "../Model/ICity";
+import { CitiesController } from "./Cities.controller";
 
 const form = document.querySelector("form") as HTMLFormElement;
 const city = document.querySelector("#new-city") as HTMLInputElement;
@@ -8,7 +9,10 @@ const cityDescription = document.querySelector("#newCity-description") as HTMLTe
 
 // const cityArray: ICity[] = JSON.parse(localStorage.getItem("cityArray") || "[]"); // con local storage
 
-form.addEventListener("submit", (event: Event) => {
+const url = 'http://localhost:3000/';
+const citiesController = new CitiesController(url);
+
+form.addEventListener("submit", async (event: Event) => {
     event.preventDefault();
 
     const newCity: ICity = {
@@ -18,6 +22,18 @@ form.addEventListener("submit", (event: Event) => {
         date: new Date(),
         cityDescription: cityDescription.value
     }
+
+    try {
+        const cityAdded = await citiesController.postCities("cities", newCity);
+        alert("Se agrego ciudad");
+        form.reset();
+        window.location.href = "../View/home.html";
+        console.log(cityAdded);
+
+    } catch (e) {
+        console.log(e);
+    }
+
 
 
     // Con local storage
