@@ -1,0 +1,17 @@
+.home-main{
+    width: 90%;
+    margin: auto;
+    padding: 30px 0;
+
+    .home-title{
+        text-align: center;
+    }
+
+    #cards-section{
+        padding: 30px 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 25px;
+    }
+}

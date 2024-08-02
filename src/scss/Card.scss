@@ -1,0 +1,44 @@
+@import './style.scss';
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+.card-container{
+    width: 280px;
+    height: 320px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+
+    .img-card{
+        width: 100%;
+        height: 205px;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+    }
+
+    .cardInfo-container{
+        padding: 15px 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        p{
+            padding: 0;
+            margin: 0;
+        }
+    }
+
+    .cross-container{
+        font-size: 30px;
+        position: absolute;
+        top:10px;
+        display: none;
+        right: 10px;
+        color: $gray;
+        cursor: pointer;
+    }
+
+}
+
+.card-container:hover .cross-container{
+    display: flex;
+}
