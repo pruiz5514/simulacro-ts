@@ -1,8 +1,8 @@
 import { ICity } from "../Model/ICity";
 import '../scss/Card.scss'
 
-export const Card = (props: ICity): HTMLElement => {
-    let { id, city, country, image, cityDescription } = props;
+export const Card = (props: ICity, temperature: number): HTMLElement => {
+    let { id, city, country, image } = props;
     const cardContainer = document.createElement("article") as HTMLElement;
     cardContainer.className = "card-container";
 
@@ -15,18 +15,19 @@ export const Card = (props: ICity): HTMLElement => {
     const cardTitle = document.createElement("h4") as HTMLHeadElement;
     cardTitle.className = "card-title"
     const cardCountry = document.createElement("p") as HTMLParagraphElement;
-    const cardDescription = document.createElement("p") as HTMLParagraphElement;
+
+    const temp = document.createElement("p") as HTMLElement;
+    temp.innerText = `${String((temperature - 273.15).toFixed(2))} °C`
 
     img.src = image;
     cardTitle.innerText = city;
     cardCountry.innerText = country;
-    cardDescription.innerText = cityDescription;
 
     const crossContainer = document.createElement("span");
     crossContainer.className = "cross-container";
     crossContainer.innerHTML = `<i product-id = ${id} class="bi bi-x-circle-fill"></i>`;
 
-    infoContainer.append(cardTitle, cardCountry, cardDescription);
+    infoContainer.append(cardTitle, cardCountry, temp);
 
     cardContainer.append(img, infoContainer, crossContainer);
 
